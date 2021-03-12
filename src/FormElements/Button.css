@@ -1,0 +1,123 @@
+.button {
+  font: inherit;
+  padding: .5rem 1.5rem;
+  border: 1px solid #1fff02;
+  border-radius: 10px;
+  background: #319204;
+  color: white;
+  cursor: pointer;
+  margin-right: 3rem;
+  text-decoration: none;
+  display: inline-block;
+  text-align: unset;
+  width: 240px;
+}
+
+.button:focus {
+  outline: none;
+  
+}
+
+.button:hover,
+.button:active {
+  background: #61ff17;
+  border-color: #8fe00d;
+}
+
+.button--inverse {
+  background-color: #eede03;
+  color: #f80606;
+  border-color:  #d36a14;
+  margin-top: 0px;
+}
+
+.button--inverse:hover,
+.button--inverse:active {
+  color: white;
+  background: #eede03;
+  border-color:  #e9ec08;
+}
+
+
+.button--crokpot {
+  background-image:url('https://i.imgur.com/uh05UMN.png');
+  font-weight: 999;
+  color:black;
+  border-color:  #1fff02;
+  width: 225px;
+  
+  margin-top: 5px;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    font-size: 25px;
+    padding:  12px ;
+}
+
+.button--crokpot:hover,
+.button--crokpot:active {
+  color: rgb(6, 88, 47);
+  background-image:url('https://i.imgur.com/JCB1Cl3.png');
+  opacity: 60%;
+  border-color:  #cef102;
+}
+
+
+.button--connexion {
+  background-color:#4285F4;
+  color:#f8f8f8;
+  border-color: #4267b2;
+  margin-top: 0px;
+}
+
+
+.button--connexion:hover,
+.button--connexion:active {
+  color: white;
+  background: #02f1d2;
+  border-color:  #04cef1;
+}
+
+
+
+.button--sante {
+  background-color:#0bbeeb;
+  color:#f8f8f8;
+  border-color: #0bbeeb;
+  margin-top: 0px;
+}
+
+
+.button--sante:hover,
+.button--sante:active {
+  color: white;
+  background: #02f1d2;
+  border-color:  #04cef1;
+}
+
+
+.button--danger {
+  background: #830000;
+  border-color: #830000;
+}
+
+.button--danger:hover,
+.button--danger:active {
+  background: #f34343;
+  border-color: #f34343;
+}
+
+.button:disabled,
+.button:hover:disabled,
+.button:active:disabled {
+  background: #ccc;
+  color: #979797;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
+
+.button--small {
+  font-size: 0.8rem;
+}
+
+.button--big {
+  font-size: 1.5rem;
+}
