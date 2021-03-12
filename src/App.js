@@ -1,11 +1,17 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
 
-import Users from './user/pages/Users'
-import NewNight from './nights/pages/NewNight'
 import MainNavigation from './Navigation/MainNavigation';
-import UserNights from './nights/pages/UserNights';
+
+import Users from './user/pages/Users'
 import Bars from './bar/pages/Bars'
+
+
+import NewNight from './nights/pages/NewNight'
+import UserNights from './nights/pages/UserNights';
+import UpdateNight from './nights/pages/UpdateNight'
+
+
 
 const App= () => {
 
@@ -28,6 +34,10 @@ const App= () => {
 
         <Route path="/MyNight/New" exact>
           <NewNight/>
+        </Route>
+
+        <Route path="/MyNight/:nightId">
+            <UpdateNight/>
         </Route>
 
         <Redirect to="/"/>
