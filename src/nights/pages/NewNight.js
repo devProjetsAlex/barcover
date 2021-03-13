@@ -1,69 +1,37 @@
-import React,{useCallback, useReducer} from 'react'
+import React from 'react'
 import Input from '../../FormElements/Input'
 import './NewNight.css'
 import {VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH} from '../../util/validators'
 import Button from '../../FormElements/Button'
-
-
-const formReducer = (state, action) => {
-    switch (action.type) {
-        case 'INPUT_CHANGE':
-        let formIsValid= true;
-        for (const inputId in state.inputs) {
-            if (inputId === action.inputId) {
-                formIsValid = formIsValid && action.isValid;
-            } else {
-                formIsValid = formIsValid && state.inputs[inputId].isValid;
-            }
-        }
-        return {
-            ...state,
-            inputs: {
-                ...state.inputs,
-                [action.inputId]: {value: action.value, isValid: action.isValid}
-            },
-            isValid: formIsValid
-        };
-        default:
-            return state
-    }
-} 
+import {useForm} from '../../FormElements/form-hook'
  
 const NewNight = () => {    
-    const [formState, dispatch] = useReducer(formReducer, {
-        inputs:{
-            barName:{
-                value:'',
-                isValid: false
-            },
-            barDate:{
-                value:'',
-                isValid: false
-            },
-            barArrival:{
-                value:'',
-                isValid: false
-            },
-            barDeparture:{
-                value:'',
-                isValid: false
-            },
-            friends:{
-                value:'',
-                isValid: false
-            }
-        },
+    const [formState, inputHandler] = useForm(
+        { 
+        barName:{
+        value:'',
         isValid: false
-    });
+    },
+        barDate:{
+        value:'',
+        isValid: false
+    },
+        barArrival:{
+        value:'',
+        isValid: false
+    },
+        barDeparture:{
+        value:'',
+        isValid: false
+    },
+        friends:{
+        value:'',
+        isValid: false
+            }         
+        },
+    false
+    )
 
-    const inputHandler = useCallback((id, value, isValid) => {
-        dispatch({
-            type: 'INPUT_CHANGE',
-            value: value, 
-            isValid: isValid, 
-            inputId: id
-        })
-    },[])
 
     const barSubmitHandler = event => {
         event.preventDefault();
