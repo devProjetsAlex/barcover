@@ -8,18 +8,18 @@ const DUMMY_NIGHT = [
         id:'p1',
         friends:'George et Phil',
         barName:'Le Sacrilège',
-        barArrival: "20hrs",
-        barDeparture: '23hrs',
-        barDate: "8 Février",
+        barArrival: "21:00",
+        barDeparture: "23:00",
+        barDate: "2021-03-13",
         creator: "u1"
     },
     {
         id:'p1',
         friends:'George et Phil',
         barName:'Le Nelligan',
-        barArrival: "23hrs",
-        barDeparture: '2hrs',
-        barDate: "8 Février",
+        barArrival: "21:00",
+        barDeparture: "23:00",
+        barDate: "2021-03-13",
         creator: "u1"
     }
 ]

@@ -1,6 +1,6 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
-
+import {useForm} from '../../FormElements/form-hook'
 import Input from '../../FormElements/Input'
 import Button from '../../FormElements/Button'
 import {VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from '../../util/validators'
@@ -33,6 +33,37 @@ const UpdateNight = () => {
     const nightId = useParams().nightId;
     const identifiedNight = DUMMY_NIGHT.find(n => n.id === nightId)
 
+    const [formState, inputHandler] = useForm({       
+            barName:{
+            value:identifiedNight.barName,
+            isValid: true
+        },
+            barDate:{
+            value:identifiedNight.barDate,
+            isValid: true
+        },    
+        
+            barArrival:{
+            value:identifiedNight.barArrival,
+            isValid: true
+        },
+            barDeparture:{
+            value:identifiedNight.barDeparture,
+            isValid: true
+        },
+            friends:{
+            value:identifiedNight.friends,
+            isValid: true
+                }  
+
+    }, true
+    )
+
+    const barUpdateSubmit = event => {
+        event.preventDefault();
+        console.log(formState.inputs)
+    }
+
     if (!identifiedNight) {
         return (
             <div className="center">
@@ -45,7 +76,7 @@ const UpdateNight = () => {
 
 
     return (
-        <form className="place-form">
+        <form className="place-form" onSubmit={barUpdateSubmit}>
         <Input 
             id='barName'
             element="input" 
@@ -53,9 +84,9 @@ const UpdateNight = () => {
             label="Bar" 
             validators={[VALIDATOR_REQUIRE(1)]} 
             errorText="Choisir un bar valide s'il vous plaît."
-            onInput = {()=>{}}
-            value={identifiedNight.barName}
-            valid={true}
+            onInput = {inputHandler}
+            initialValue={formState.inputs.barName.value}
+            initialIsValid={formState.inputs.barName.isValid}
             />
             <Input 
             id='barDate'
@@ -64,9 +95,9 @@ const UpdateNight = () => {
             label="Jour" 
             validators={[VALIDATOR_MINLENGTH(1)]} 
             errorText="Choisir une date s'il vous plaît."
-            onInput ={()=>{}}
-            value={identifiedNight.barDate}
-            valid={true}
+            onInput ={inputHandler}
+            initialValue={formState.inputs.barDate.value}
+            initialIsValid={formState.inputs.barDate.isValid}
             />
                   <Input 
             id='barArrival'
@@ -75,9 +106,9 @@ const UpdateNight = () => {
             label="Heure d'arrivé" 
             validators={[VALIDATOR_MINLENGTH(1)]} 
             errorText="Choisir une heure d'arrivé."
-            onInput = {()=>{}}
-            value={identifiedNight.barArrival}
-            valid={true}
+            onInput = {inputHandler}
+            initialValue={formState.inputs.barArrival.value}
+            initialIsValid={formState.inputs.barArrival.isValid}
             />
             <Input 
             id='barDeparture'
@@ -86,9 +117,9 @@ const UpdateNight = () => {
             label="Heure de départ" 
             validators={[VALIDATOR_MINLENGTH(1)]} 
             errorText="Choisir une heure de départ."
-            onInput = {()=>{}}
-            value={identifiedNight.barDeparture}
-            valid={true}
+            onInput = {inputHandler}
+            initialValue={formState.inputs.barDeparture.value}
+            initialIsValid={formState.inputs.barDeparture.isValid}
             />
             <Input
             id='friends'
@@ -96,12 +127,12 @@ const UpdateNight = () => {
             label='Convive de soirée'
             validators={[VALIDATOR_REQUIRE(1)]}
             errorText="Entrer le nom des personnes avec qui vous sortez"
-            onInput={()=>{}}
-            value={identifiedNight.friends}
-            valid={true}
+            onInput={inputHandler}
+            initialValue={formState.inputs.friends.value}
+            initialIsValid={formState.inputs.friends.isValid}
             />
 
-            <Button type="submit" disabled={true}>
+            <Button type="submit" disabled={!formState.isValid} >
                 Modifié la soirée!
             </Button>
         </form>

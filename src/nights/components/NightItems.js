@@ -38,12 +38,12 @@ const NightItems = props => {
                     </h4>
 
                     <p>
-                        <small> Arrival : {props.barArrival} Departure : {props.barDeparture} </small>
+                        <small> Arrivé : {props.barArrival} Départ : {props.barDeparture} </small>
                     </p>
 
                     <div className="place-item__actions">
-                        <Button onClick={openbar} inverse> Voir le bar. </Button>
-                        <Button to={`/MyNight/${props.id}`} > Modifier les heures</Button>
+                        <Button onClick={openbar} > Voir le bar. </Button>
+                        <Button to={`/MyNight/${props.id}`} inverse> Modifier les heures</Button>
                         <Button danger> Effacer </Button>
                     </div>
                 </div>

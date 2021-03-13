@@ -38,7 +38,7 @@ const MainNavigation = props => {
                     <Link to="/"> Bar Québec </Link>
                 </h1>
                 
-                <nav>
+                <nav className="main-navigation__header-nav">
                   <NavLinks/>
                 </nav>
     
