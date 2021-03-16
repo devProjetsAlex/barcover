@@ -14,7 +14,7 @@ const DUMMY_NIGHT = [
         creator: "u1"
     },
     {
-        id:'p1',
+        id:'p2',
         friends:'George et Phil',
         barName:'Le Nelligan',
         barArrival: "21:00",

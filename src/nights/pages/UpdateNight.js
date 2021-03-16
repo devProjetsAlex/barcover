@@ -1,10 +1,11 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 import {useForm} from '../../FormElements/form-hook'
 import Input from '../../FormElements/Input'
 import Button from '../../FormElements/Button'
 import {VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from '../../util/validators'
 import './NewNight.css'
+import Card from '../../UIElements/Card'
 
 const DUMMY_NIGHT = [
     {
@@ -17,7 +18,7 @@ const DUMMY_NIGHT = [
         creator: "u1"
     },
     {
-        id:'p1',
+        id:'p2',
         friends:'George et Phil',
         barName:'Le Nelligan',
         barArrival: "21:00",
@@ -29,35 +30,71 @@ const DUMMY_NIGHT = [
 
 
 const UpdateNight = () => {
+    const [isLoading, setIsLoading] = useState(true)
 
     const nightId = useParams().nightId;
-    const identifiedNight = DUMMY_NIGHT.find(n => n.id === nightId)
-
-    const [formState, inputHandler] = useForm({       
-            barName:{
-            value:identifiedNight.barName,
-            isValid: true
+    
+    const [formState, inputHandler, setFormData] = useForm({       
+        barName:{
+            value:'',
+            isValid: false
         },
-            barDate:{
-            value:identifiedNight.barDate,
-            isValid: true
+        barDate:{
+            value:'',
+            isValid: false
         },    
         
-            barArrival:{
-            value:identifiedNight.barArrival,
-            isValid: true
+        barArrival:{
+            value:'',
+            isValid: false
         },
-            barDeparture:{
-            value:identifiedNight.barDeparture,
-            isValid: true
+        barDeparture:{
+            value:'',
+            isValid: false
         },
-            friends:{
-            value:identifiedNight.friends,
-            isValid: true
-                }  
-
-    }, true
+        friends:{
+            value:'',
+            isValid: false
+        }  
+        
+    }, false
     )
+
+    const identifiedNight = DUMMY_NIGHT.find(n => n.id === nightId)
+    
+    useEffect(()=>{
+        if (identifiedNight) {
+            setFormData(
+                {
+                    barName:{
+                        value:identifiedNight.barName,
+                        isValid: true
+                    },
+                    barDate:{
+                        value:identifiedNight.barDate,
+                        isValid: true
+                    },    
+                    
+                    barArrival:{
+                        value:identifiedNight.barArrival,
+                        isValid: true
+                    },
+                    barDeparture:{
+                        value:identifiedNight.barDeparture,
+                        isValid: true
+                    },
+                    friends:{
+                        value:identifiedNight.friends,
+                        isValid: true
+                    }  
+                }, 
+            true
+            )
+        }
+        setIsLoading(false)
+    }, [setFormData, identifiedNight])
+
+
 
     const barUpdateSubmit = event => {
         event.preventDefault();
@@ -66,12 +103,22 @@ const UpdateNight = () => {
 
     if (!identifiedNight) {
         return (
+            <Card>
             <div className="center">
                 <h2> Aucune soirée de trouvée. </h2>
             </div>
+            </Card>
         )
     }
 
+
+    if (isLoading) {
+        return (
+            <div className="center">
+                <h2> Loading... </h2>
+            </div>
+        )
+    }
 
 
 

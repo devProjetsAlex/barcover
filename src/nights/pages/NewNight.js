@@ -47,9 +47,9 @@ const NewNight = () => {
             id='barName'
             element="input" 
             type="text" 
-            label="Bar" 
+            label="Lieux de la soirée. (Amis, bars, restaurant...)" 
             validators={[VALIDATOR_REQUIRE(1)]} 
-            errorText="Choisir un bar valide s'il vous plaît."
+            errorText="Créer un nom valide s'il vous plaît."
             onInput = {inputHandler}
             />
             <Input 
@@ -82,7 +82,7 @@ const NewNight = () => {
             <Input
             id='friends'
             element='textarea'
-            label='Convive de soirée'
+            label='Convive de soirée?'
             validators={[VALIDATOR_REQUIRE(1)]}
             errorText="Entrer le nom des personnes avec qui vous sortez"
             onInput={inputHandler}

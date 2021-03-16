@@ -13,11 +13,12 @@
 
 .button:focus {
   outline: none;
-}
+ }
 
 .button:hover,
-.button:active {
-  background: hsl(115, 100%, 63%);
+.button:active {  
+  color: #09e909;  
+  background: hsl(120, 100%, 99%);
   border-color: #09e909;
 }
 
@@ -39,6 +40,7 @@
 
 .button--danger:hover,
 .button--danger:active {
+  color :#fff;
   background: #f34343;
   border-color: #f34343;
 }

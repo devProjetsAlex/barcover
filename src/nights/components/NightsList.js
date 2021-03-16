@@ -2,15 +2,17 @@ import React from 'react'
 import Card from '../../UIElements/Card'
 import "./NightsList.css"
 import NightItems from './NightItems'
+import Button from '../../FormElements/Button'
 
-const BarsList = props => {
+const NightsList = props => {
     if (props.items.length === 0 ) {
         return(
            <div className="place-list center">
                <Card>
                    <h2>
-                       Vous n'avez pas enregistré de bar visité dans votre liste. Voulez-vous en enregistrer un?
+                       Vous n'avez pas enregistré de lieux visité dans votre soirée. Voulez-vous en enregistrer un?
                    </h2>
+                   <Button className="place-list center" to="/MyNight/New"> Créer une soirée! </Button>
                </Card>
             
            </div>
@@ -36,4 +38,4 @@ const BarsList = props => {
     )
 }
 
-export default BarsList
+export default NightsList

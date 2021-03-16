@@ -6,8 +6,23 @@ import './NightItems.css'
 
 const NightItems = props => {
     const [showBar, setShowBar] = useState(false)
+    const [showConfirmModal, setShowConfirmModal] = useState(false)
+
     const openbar = () => setShowBar(true)
     const closeBar = () => setShowBar(false)
+
+    const showDeleteWarningHandler = () => {
+        setShowConfirmModal(true)
+    }
+    const cancelDeleteHandler = () => {
+        setShowConfirmModal(false)
+    }
+
+    const confirmDeleteHandler = () =>{
+        setShowConfirmModal(false)
+        console.log('Deleting...')
+    }
+
         
         return (
             <>
@@ -22,8 +37,18 @@ const NightItems = props => {
                 
                     <div className="map-container"> The Bar </div>
             </Modal>
+
+            <Modal show={showConfirmModal} onCancel={cancelDeleteHandler} header="Ëtes-vous sur de vouloir effacer la soirée?" footerClass="place-item__modal-actions" footer={
+                <>
+                    <Button onClick={cancelDeleteHandler} className='inverse'> Cancel</Button>
+                    <Button onClick={confirmDeleteHandler}  className="danger"> Effacer </Button>
+
+                </>
+            }>
+
+            </Modal>
            
-            <li className="place=item">
+            <li className="place-item">
                 <Card className="place-item">
                 <div className="place-item__image">
                     <img src={props.image} alt={props.title}/>
@@ -44,7 +69,7 @@ const NightItems = props => {
                     <div className="place-item__actions">
                         <Button onClick={openbar} > Voir le bar. </Button>
                         <Button to={`/MyNight/${props.id}`} inverse> Modifier les heures</Button>
-                        <Button danger> Effacer </Button>
+                        <Button danger onClick={showDeleteWarningHandler}> Effacer </Button>
                     </div>
                 </div>
                 </Card>
